@@ -71,8 +71,7 @@ function checkAnswerScore() {
     event.preventDefault();
     let userAnswer = $("input[name='answer']:checked").val();
     if (userAnswer === undefined) {
-      let message = '<span class= "wait">Hold on a second. Choose an Answer.</span>';
-      $('.block-this').append(message)
+     alert('Hang on! Please choose an answer!')
     }
     else {
        $('.wait').remove()
