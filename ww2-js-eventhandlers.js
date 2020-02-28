@@ -26,11 +26,6 @@ function updateQuestionNumber() {
 function handleQuizApp() {
   beginQuiz();
   restartQuiz()
-  // displayQuestions(currentQuestion);
-  // displayOptions(currentOptions);
-  // checkAnswerScore();
-  // endOfLine();
-
 }
 
 
@@ -49,7 +44,7 @@ function beginQuiz() {
 //03 displays the question set
 function displayQuestions(currentQuestion) {
 
-  const htmlOutput = $(`<form class = "block-this">
+  const htmlOutput = $(`<form class = "quiz-block">
       <fieldset id= "answer-pool">
         <legend class= "question">${STORE[currentQuestion].question}</legend>
       </fieldset>
@@ -63,28 +58,29 @@ function displayQuestions(currentQuestion) {
 
 function displayOptions(currentOptions) {
   STORE[currentQuestion].answers.forEach(function (answerLabel) {
-    $("#answer-pool").append(`<input type="radio" name="answer" id="${answerLabel} " value="${answerLabel}">${answerLabel}</input>`);
+    $("#answer-pool").append(`<label class="choice" for="${answerLabel}">
+    <input type="radio" name="answer" id="${answerLabel} " value="${answerLabel}">${answerLabel}</input>
+    </label>`);
   });
 }
 
 
 //05 checks whether the chosen option is right or wrong and displays respective message
 function checkAnswerScore() {
-  console.log('checkAnswerScore')
   $(document).on('click', '.submission', function (event) {
     event.preventDefault();
     let userAnswer = $("input[name='answer']:checked").val();
-    console.log(userAnswer)
     if (userAnswer === undefined) {
-      let message = 'Hold on a second. Choose an Answer.';
+      let message = '<span class= "wait">Hold on a second. Choose an Answer.</span>';
       $('.block-this').append(message)
     }
     else {
+       $('.wait').remove()
       if (userAnswer === STORE[currentQuestion].correctAnswer) {
         updateCurrentScore()
         let output = null;
         output = `<section class = "right-answer">
-       <h3>They made it through!</h3>
+       <h2>They made it through!</h2>
        <img src="images/right-answer.jpg" alt="squad made it through!" class="images" width="200px">
        <input type = "hidden" class= "currentQuestion" value = "${currentQuestion}" />
       <button class ="next">
@@ -96,9 +92,9 @@ function checkAnswerScore() {
       else {
         let output = null;
         output = `<section class= "wrong-answer">
-       <h1>We've got a squad down!</h1>
+       <h2>We've got a squad down!</h2>
        <img src="images/wrong-answer.jpg" alt="we have a man down!" class="images" width="200px">
-       <h2 class= "correction">${STORE[currentQuestion].correctAnswer}</h2>
+       <h3 class= "correction">${STORE[currentQuestion].correctAnswer}</h3>
        <input type = "hidden" class= "currentQuestion" value = "${currentQuestion}" />
        <button class ="next">
        Next group
@@ -121,7 +117,6 @@ $(document).on('click', '.next', function (event) {
   $('.right-answer').hide();
   $('.wrong-answer').hide();
   let currentQuestionNum = $(this).parent().find('.currentQuestion').val()
-  console.log(currentQuestionNum)
   //if final question do not incriment!
   currentQuestionNum++
   if (currentQuestionNum < STORE.length) {
@@ -136,14 +131,14 @@ $(document).on('click', '.next', function (event) {
 
 //06 checks whether it reached the end of questions list 
 function endOfLine() {
-  if (currentScore <= 5) {
+  if (currentScore <= 7) {
     ending = $(`<p>Though the day has been won, many men have lost their lives due to your lack of Knowledge. </p>
     <img src="images/bad-ending.jpg" alt="Medals of Honor for all." class="images" width="200px">
       <button class = "retry-quiz">Retake Quiz</button>
     </section>`)
 
   }
-  else if (currentScore >= 6) {
+  else if (currentScore >= 8) {
     ending = $(`<p>You have used your intelligence wisely and your unit has minimized the casualties. <strong>Congradulations, commander!</strong></p>
            <img src="images/good-ending.jpg" alt="Medals of Honor for all." class="images" width="200px">
       <button class = "retry-quiz">Retake Quiz</button>`)
@@ -161,7 +156,6 @@ function restartQuiz() {
     beginQuiz();
     $('.introduction').show();
     $(`.begin-quiz`).show();
-    console.log('reset')
   })
 }
 
