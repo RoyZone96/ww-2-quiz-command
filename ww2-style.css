@@ -88,8 +88,7 @@ label{
   display: block;
 }
 
-.right-answer{
-  /* text-align: center; */
+.correct-answer{
   color: green;
   display: flex;
   flex-direction: column;
