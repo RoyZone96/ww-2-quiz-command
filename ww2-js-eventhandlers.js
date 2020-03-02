@@ -1,9 +1,13 @@
 // base line values
 let currentQuestion = 0;
-let currentOptions = 0;
 let currentScore = 0
 
 //handles updating the score
+
+function initializeApp() {
+  checkAnswerScore();
+  handleQuizApp();
+}
 
 function resetScoreBoard() {
   currentQuestion = 0
@@ -34,7 +38,6 @@ function beginQuiz() {
   $('.begin-quiz').on('click', function () {
     displayQuestions(currentQuestion);
     displayOptions(currentOptions);
-    checkAnswerScore();
     $('.score-number').text(0);
     $('.introduction').hide();
     $('.begin-quiz').hide()  
@@ -163,4 +166,5 @@ function restartQuiz() {
 
 
 
-$(handleQuizApp);
+
+$(initializeApp);

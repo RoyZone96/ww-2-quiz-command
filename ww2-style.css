@@ -26,10 +26,6 @@ h1{
   font-size: 30px;
 }
 
-h2{
-
-}
-
 .score-board{
   margin-left: auto;
   margin-right: auto;
@@ -43,15 +39,7 @@ ul{
   display: block;
 }
 
-li{
-  display: inline-block;
-  width: auto;
-  float: left;
-}
 
-li:last-child{
-  float: right
-}
 
 .quiz-area{
   display: block;
@@ -61,13 +49,13 @@ li:last-child{
     -o-background-size: cover;
     background-size: cover;
   width:  85%;
-  max-width: 700px;
-  height: 400px;
+  max-width: 900px;
+  height: 500px;
   border: 3px solid;
+  align-content: center;
   padding: 15px;
   margin-left: auto;
   margin-right: auto;
-  color:goldenrod;
   border-color: black
 }
 
@@ -77,49 +65,54 @@ p{
 }
 
 button{
-  display: flex;
-  justify-content: flex-end
+  display: block;
   width: 100px;
   height: 50px;
-  background-color: greenyellow;
-  color: blue;
+  background-color: black;
+  color: greenyellow;
   font-size: 16px;
 }
 
-.wait{
-  color: red;
-  background-color: gainsboro
-}
 
-
-input{
- display: block;
-}
 
 legend{
   background-color: gainsboro;
-  color: black
+  color:black
 }
 
 #answer-pool{
-  background-color: gray
+  background-color: gray;
+}
+
+label{
+  display: block;
 }
 
 .right-answer{
-  text-align: center;
-  background-color: gainsboro  
+  /* text-align: center; */
+  color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  left: 100px
 }
 
 
 .wrong-answer{
-  text-align: center; 
-  background-color: gainsboro
+  color: red;
+  text-align: center;
+  background: black   
 }
 
-#good-ending{
-    
-}
+@media only screen and (min-width: 768px){
+li{
+  display: inline-block;
+  width: auto;
+  float: left;
+  }
 
-#bad-ending{
- 
+li:last-child{
+  float: right
+  }
 }
