@@ -94,9 +94,9 @@ label{
 
 .correct-answer{
   color: green;
-  position: relative;
   margin-left: auto;
   margin-right: auto;
+  background: black   
 }
 
 
