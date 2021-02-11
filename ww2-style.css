@@ -79,6 +79,7 @@ button{
 
 
 
+
 legend{
   background-color: gainsboro;
   color:black
@@ -94,9 +95,12 @@ label{
 
 .correct-answer{
   color: green;
+  background: black   
+}
+
+.correct-answer .image{
   margin-left: auto;
   margin-right: auto;
-  background: black   
 }
 
 
