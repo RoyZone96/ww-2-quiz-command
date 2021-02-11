@@ -98,7 +98,6 @@ label{
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  left: 100px;
   margin-left: auto;
   margin-right: auto;
 }
